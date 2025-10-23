@@ -147,7 +147,7 @@ async def description_spend_add_to_fin(message: Message, state: FSMContext):
     await state.update_data(description_add=descr)
     data = await state.get_data()
     await db.addObjPlusFin(user_id=message.from_user.id, data=data)
-    await message.answer(f'Прибавление: {data['add_fin_state']} BYN\nОписание: {data['description_add']}\nЗаписано!', reply_markup=kb.exit)
+    await message.answer(f"Прибавление: {data['add_fin_state']} BYN\nОписание: {data['description_add']}\nЗаписано!", reply_markup=kb.exit)
     await state.clear()
 
 @router.message(SetAllFinance.minus_fin_state)
@@ -164,7 +164,7 @@ async def description_spend_minus_fin(message: Message, state: FSMContext):
     await state.update_data(description_spend=descr)
     data = await state.get_data()
     await db.addObjMinFin(user_id=message.from_user.id, data=data)
-    await message.answer(f'Трата: {data['minus_fin_state']}\nОписание: {data['description_spend']}\nЗаписано!', reply_markup=kb.exit)
+    await message.answer(f"Трата: {data['minus_fin_state']}\nОписание: {data['description_spend']}\nЗаписано!", reply_markup=kb.exit)
     await state.clear()
 
 
